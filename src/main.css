@@ -1,0 +1,9 @@
+.twolines{
+    display: flex;
+    margin-top:100px;
+    width: 120%;
+}
+
+.todos{
+    background-color: red;
+}
