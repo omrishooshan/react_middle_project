@@ -149,9 +149,11 @@ export default function Users(props){
       get_clicked_userid(usid)
     }
 
-    const deleteus = useCallback(id => {
+    const deleteus = (id => {
+
       getusers(users.filter(c => c.id !== id));
-    }, [users]);
+     
+    });
     // const deleteus=async(id)=>{
 
     //   await console.log(users)
@@ -196,9 +198,9 @@ export default function Users(props){
                                
                     {  
                     
-                      users.filter(us=>{ console.log(typedLetter); return us.name.includes(typedLetter)}).map((x,index)=>{
-                        console.log("user==>",x);
-                             return  <Grid key={index}  item lg={8}>
+                      users.filter(us=>{return us.name.toLowerCase().includes(typedLetter.toLowerCase()) ||us.email.toLowerCase().includes(typedLetter.toLowerCase())}).map(x=>{
+                        /*console.log("user==>",x);*/
+                             return  <Grid key={x.id}  item lg={8}>
                                  <Paper elevation={3}  className={classes.paper}> 
                                  <User  myuser={x} get_id_for_tasks={(usid)=>change_clicked_userid(usid)}
                                   get_update_user={(us)=>update(us)}
